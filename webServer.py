@@ -30,7 +30,7 @@ def webServer(port=13331):
             f = open(file_path, 'rb')
             binary_data = f.read()
 
-# 200 OK headers (ALL must use \r\n)
+# 200 OK headers
             header = "HTTP/1.1 200 OK\r\n"
             header += "Content-Type: text/html; charset=utf-8\r\n"
             header += "Content-Length: " + str(len(binary_data)) + "\r\n"
@@ -42,7 +42,7 @@ def webServer(port=13331):
             connectionSocket.sendall(response)
 
         except Exception:
-# 404 body (bytes)
+# 404 body
             body = b"<html><body><h1>404 Not Found</h1></body></html>"
 
             header = "HTTP/1.1 404 Not Found\r\n"
