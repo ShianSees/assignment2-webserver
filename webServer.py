@@ -53,7 +53,7 @@ def webServer(port=13331):
             response = header.encode() + body
             connectionSocket.sendall(response)
 
-        # Close client socket (always)
+        # Close client socket
         connectionSocket.close()
 
 if __name__ == "__main__":
