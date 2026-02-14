@@ -35,25 +35,27 @@ def webServer(port=13331):
             header += "Content-Type: text/html; charset=utf-8\r\n"
             header += "Content-Length: " + str(len(binary_data)) + "\r\n"
             header += "Server: ShiansServer\r\n"
+            header += "Connection: close\r\n"
             header += "\r\n"
 
             response = header.encode() + binary_data
             connectionSocket.sendall(response)
 
         except Exception:
-            # 404 body (bytes)
+# 404 body (bytes)
             body = b"<html><body><h1>404 Not Found</h1></body></html>"
 
             header = "HTTP/1.1 404 Not Found\r\n"
             header += "Content-Type: text/html; charset=utf-8\r\n"
             header += "Content-Length: " + str(len(body)) + "\r\n"
             header += "Server: ShiansServer\r\n"
+            header += "Connection: close\r\n"
             header += "\r\n"
 
             response = header.encode() + body
             connectionSocket.sendall(response)
 
-        # Close client socket
+# Close client socket
         connectionSocket.close()
 
 if __name__ == "__main__":
